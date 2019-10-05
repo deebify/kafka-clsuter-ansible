@@ -1,0 +1,6 @@
+kafka_package_url: https://www-eu.apache.org/dist/kafka/2.3.0/kafka_2.12-2.3.0.tgz
+kafka_dir_name: kafka_2.12-2.3.0
+kafka_pacakge_tmp: /tmp/kafka_2.12-2.3.0.tgz
+kafka_install_dest: /home/kafka
+kafka_user: kafka
+kafka_data: /home/kafka/kafka-data

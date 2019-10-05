@@ -1,0 +1,3 @@
+- hosts: kafka-nodes
+  roles:
+    - {role: kafka-setup}

@@ -7,11 +7,11 @@ cairo-bd-kafka-0003 ansible_host=192.168.0.113
 
 
 [kafka-nodes]
-cairo-bd-kafka-0004 ansible_host=192.168.0.153
-cairo-bd-kafka-0005 ansible_host=192.168.0.36
-cairo-bd-kafka-0001 ansible_host=192.168.0.220
-cairo-bd-kafka-0002 ansible_host=192.168.0.23
-cairo-bd-kafka-0003 ansible_host=192.168.0.113
+cairo-bd-kafka-0004 ansible_host=192.168.0.153 kafka_id=0
+cairo-bd-kafka-0005 ansible_host=192.168.0.36 kafka_id=1
+cairo-bd-kafka-0001 ansible_host=192.168.0.220 kafka_id=2
+cairo-bd-kafka-0002 ansible_host=192.168.0.23 kafka_id=3
+cairo-bd-kafka-0003 ansible_host=192.168.0.113 kafka_id=4
 
 [zookeeper-nodes]
 cairo-bd-kafka-0001 ansible_host=192.168.0.220 id=1

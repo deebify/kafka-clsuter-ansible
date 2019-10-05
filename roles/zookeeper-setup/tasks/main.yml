@@ -4,11 +4,6 @@
     dest: "{{ zookeeper_pacakge_tmp }}"
     #checksum: "{{ zookeeper_package_checksum }}"
 
-- name: Extract Zookeeper package
-  unarchive:
-    src: "{{ zookeeper_pacakge_tmp }}"
-    dest: "{{ zookeeper_install_dest }}"
-
 - name: Create zookeeper user
   user:
     name: "{{ zookeeper_user }}"
@@ -20,6 +15,11 @@
     state: directory
     mode: "0700"
 
+- name: Extract Zookeeper package
+  unarchive:
+    src: "{{ zookeeper_pacakge_tmp }}"
+    dest: "{{ zookeeper_install_dest }}"
+    
 - name: Create Id for Zookeeper
   lineinfile:
     path: "{{ zookeeper_data }}/myid"

@@ -1,0 +1,22 @@
+- name: Install Kafka package
+  get_url:
+    url: "{{ kafka_package_url }}"
+    dest: "{{ kafka_pacakge_tmp }}"
+
+- name: Create Kafka User
+  user: 
+    name: "{{ kafka_user }}"
+
+- name: Create Kafka data directory
+  file: 
+    path : "{{ kafka_data }}"
+    owner: "{{ kafka_user }}"
+    state: directory
+    mode: "0700"
+  
+- name: Extract Kafka package
+  unarchive:
+    src: "{{ kafka_pacakge_tmp }}"
+    dest: "{{ kafka_isntall_dir }}"
+    
+  
