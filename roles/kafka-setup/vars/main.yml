@@ -4,5 +4,5 @@ kafka_pacakge_tmp: /tmp/kafka_2.12-2.3.0.tgz
 kafka_install_dest: /home/kafka
 kafka_user: kafka
 kafka_data: /home/kafka/kafka-data
-zookeeper_connection_string: cairo-bd-kafka-0001.novalocal:2181,cairo-bd-kafka-0003.novalocal:2181,cairo-bd-kafka-0005.novalocal:2181
+zookeeper_connection_string: cairo-bd-kafka-0001.novalocal:2181,cairo-bd-kafka-0003.novalocal:2181,cairo-bd-kafka-0005.novalocal:2181/kafka_cluster
 

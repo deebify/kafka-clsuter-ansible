@@ -35,11 +35,10 @@
   lineinfile:
     path: "{{ kafka_install_dest }}/{{ kafka_dir_name }}/config/server.properties"
     regex: '/tmp/kafka-logs'
-    line: "{{ kafka_data }}"
+    line: "log.dirs={{ kafka_data }}"
 
 - name: Change kafka Advertised listener prop server.properties
   lineinfile:
     path: "{{ kafka_install_dest }}/{{ kafka_dir_name }}/config/server.properties"
-    regex: 'your.host.name'
-    line: "{{ hostvars[inventory_hostname] }}"
-    
+    regex: 'advertised.listeners=PLAINTEXT://your.host.name:9092'
+    line: "advertised.listeners=PLAINTEXT://{{ inventory_hostname }}:9092"
