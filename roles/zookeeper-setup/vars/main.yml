@@ -1,0 +1,13 @@
+zookeeper_package_checksum: sha256:4e22df899a83ca3cc15f6d94daadb1a8631fb4108e67b4f56d1f4fcf95f10f89c8ff1fb8a7c84799a3856d8803a8db1e1f2f3fe1b7dc0d6cedf485ef90fd212d
+zookeeper_package_url: https://www-eu.apache.org/dist/zookeeper/current/apache-zookeeper-3.5.5-bin.tar.gz
+zookeeper_dir_name: apache-zookeeper-3.5.5-bin
+zookeeper_pacakge_tmp: /tmp/apache-zookeeper-3.5.5-bin.tar.gz
+zookeeper_install_dest: /home/cloud
+zookeeper_servers: |
+        server.1=cairo-bd-kafka-0001.novalocal:2888:3888
+        server.2=cairo-bd-kafka-0003.novalocal:2888:3888
+        server.3=cairo-bd-kafka-0005.novalocal:2888:3888
+        clientPortAddress=0.0.0.0
+        maxClientCnxns=0 
+zookeeper_data: /home/zookeeper/zookeeper-data
+zookeeper_user: zookeeper

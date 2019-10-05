@@ -1,0 +1,47 @@
+- name: Install Zookeeper package
+  get_url:
+    url: "{{ zookeeper_package_url }}"
+    dest: "{{ zookeeper_pacakge_tmp }}"
+    #checksum: "{{ zookeeper_package_checksum }}"
+
+- name: Extract Zookeeper package
+  unarchive:
+    src: "{{ zookeeper_pacakge_tmp }}"
+    dest: "{{ zookeeper_install_dest }}"
+
+- name: Create zookeeper user
+  user:
+    name: "{{ zookeeper_user }}"
+
+- name: Create Zookeeper data directory
+  file:
+    path: "{{ zookeeper_data }}"
+    owner: "{{ zookeeper_user }}"
+    state: directory
+    mode: "0700"
+
+- name: Create Id for Zookeeper
+  lineinfile:
+    path: "{{ zookeeper_data }}/myid"
+    line: "{{ hostvars[inventory_hostname]['id'] }}"
+    create: yes
+
+- name: Rename zoo configuration file
+  command: mv  "{{ zookeeper_install_dest }}/{{ zookeeper_dir_name }}/conf/zoo_sample.cfg"  "{{ zookeeper_install_dest }}/{{ zookeeper_dir_name }}/conf/zoo.cfg"
+
+- name: Change zookeeper data directory 
+  lineinfile:
+    path: "{{ zookeeper_install_dest }}/{{ zookeeper_dir_name }}/conf/zoo.cfg"
+    regex: 'dataDir=/tmp/zookeeper'
+    line: "dataDir={{ zookeeper_data }}"
+
+
+- name: Configuring Zookeeper
+  blockinfile:
+    path: "{{ zookeeper_install_dest }}/{{ zookeeper_dir_name }}/conf/zoo.cfg"
+    block: "{{ zookeeper_servers }}"
+
+- name: Starting Zookeeper server
+  command: " {{ zookeeper_install_dest }}/{{ zookeeper_dir_name }}/bin/zkServer.sh start"
+
+
