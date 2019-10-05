@@ -17,6 +17,6 @@
 - name: Extract Kafka package
   unarchive:
     src: "{{ kafka_pacakge_tmp }}"
-    dest: "{{ kafka_isntall_dir }}"
-    
+    dest: "{{ kafka_install_dest }}"
+
   
