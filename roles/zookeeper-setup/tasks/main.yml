@@ -41,7 +41,15 @@
     path: "{{ zookeeper_install_dest }}/{{ zookeeper_dir_name }}/conf/zoo.cfg"
     block: "{{ zookeeper_servers }}"
 
+- name: Stopping Zookeeper server if running
+  command: " {{ zookeeper_install_dest }}/{{ zookeeper_dir_name }}/bin/zkServer.sh stop"
+  tags:
+    - stop_zookeeper
+
 - name: Starting Zookeeper server
   command: " {{ zookeeper_install_dest }}/{{ zookeeper_dir_name }}/bin/zkServer.sh start"
+  tags:
+    - start_zookeeper
+  
 
 

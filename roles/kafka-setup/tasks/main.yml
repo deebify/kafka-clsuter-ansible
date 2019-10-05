@@ -43,5 +43,12 @@
     regex: 'advertised.listeners=PLAINTEXT://your.host.name:9092'
     line: "advertised.listeners=PLAINTEXT://{{ inventory_hostname }}:9092"
 
+- name: Stopping Kafka server if running
+  command: "{{ kafka_install_dest }}/{{ kafka_dir_name }}/bin/kafka-server-stop.sh {{ kafka_install_dest }}/{{ kafka_dir_name }}/config/server.properties"
+  tags:
+    - stop_kafka
+
 - name: Starting Kafka server
   command: "{{ kafka_install_dest }}/{{ kafka_dir_name }}/bin/kafka-server-start.sh {{ kafka_install_dest }}/{{ kafka_dir_name }}/config/server.properties"
+  tags:
+    - start_kafka
