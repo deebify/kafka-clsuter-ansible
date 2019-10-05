@@ -19,4 +19,27 @@
     src: "{{ kafka_pacakge_tmp }}"
     dest: "{{ kafka_install_dest }}"
 
-  
+- name: Change kafka broker_id prop server.properties
+  lineinfile:
+    path: "{{ kafka_install_dest }}/{{ kafka_dir_name }}/config/server.properties"
+    regex: 'broker.id=0'
+    line: "broker.id={{ hostvars[inventory_hostname]['kafka_id']}}"
+
+- name: Change kafka zookeeper prop server.properties
+  lineinfile:
+    path: "{{ kafka_install_dest }}/{{ kafka_dir_name }}/config/server.properties"
+    regex: 'zookeeper.connect=localhost:2181'
+    line: "zookeeper.connect={{ zookeeper_connection_string }}"
+
+- name: Change kafka data dir prop server.properties
+  lineinfile:
+    path: "{{ kafka_install_dest }}/{{ kafka_dir_name }}/config/server.properties"
+    regex: '/tmp/kafka-logs'
+    line: "{{ kafka_data }}"
+
+- name: Change kafka Advertised listener prop server.properties
+  lineinfile:
+    path: "{{ kafka_install_dest }}/{{ kafka_dir_name }}/config/server.properties"
+    regex: 'your.host.name'
+    line: "{{ hostvars[inventory_hostname] }}"
+    
