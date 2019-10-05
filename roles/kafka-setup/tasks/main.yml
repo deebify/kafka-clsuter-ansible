@@ -42,3 +42,6 @@
     path: "{{ kafka_install_dest }}/{{ kafka_dir_name }}/config/server.properties"
     regex: 'advertised.listeners=PLAINTEXT://your.host.name:9092'
     line: "advertised.listeners=PLAINTEXT://{{ inventory_hostname }}:9092"
+
+- name: Starting Kafka server
+  command: "{{ kafka_install_dest }}/{{ kafka_dir_name }}/bin/kafka-server-start.sh {{ kafka_install_dest }}/{{ kafka_dir_name }}/config/server.properties"
